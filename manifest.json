@@ -1,0 +1,40 @@
+{
+  "name": "Login Free WiFi",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "Chrome extennsion that helps you login to free WiFi.",
+  "permissions": [
+    "tabs"
+  ],
+  "icons": {
+    "36": "assets/wifi_1x.png",
+    "48": "assets/wifi_2x.png"
+  },
+  "background": {
+    "scripts": [
+      "background/onmessage.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://freewifi.aeonibs.jp/aeon/*"
+      ],
+      "js": [
+        "login/aeon.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://service.wi2.ne.jp/wi2auth/at_STARBUCKS_Wi2/*"
+      ],
+      "js": [
+        "login/starbacks.js"
+      ]
+    }
+  ]
+}
